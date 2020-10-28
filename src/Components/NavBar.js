@@ -33,18 +33,12 @@ const ImgLogo = styled.img`
 `;
 
 const SignIn = styled.button`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     font-size: 16px;
     line-height: 19px;
     background-color: transparent;
     border: none;
     color: #fff;
-    ::last-child {
-      margin-top: 3px;
-    }
+    margin-right: 25px;
 `;
 
 export const NavBar = () => (
@@ -56,7 +50,7 @@ export const NavBar = () => (
     </Logo>
     <SignIn>
       <img src={signIn} alt="sign in"/>
-      войти
+      <p>войти</p>
     </SignIn>
   </NavBarStyled>
 )
