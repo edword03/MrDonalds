@@ -1,2 +1,5 @@
 [1028/141406.553:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1028/143750.919:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1103/200707.890:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1103/204243.108:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1105/184637.304:ERROR:crash_report_database_win.cc(469)] failed to stat report
