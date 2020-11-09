@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ButtonCheckout } from './ButtonCheckout';
 
 const Overlay = styled.div`
     position: fixed;
@@ -44,24 +45,7 @@ const HeaderContent = styled.div`
     font-family: 'Pacifico', cursive;
 `;
 
-const ButtonCheckout = styled.button`
-    display: block;
-    margin: 0 auto;
-    width: 250px;
-    height: 65px;
-    font-size: inherit;
-    font-family: inherit;
-    background-color: #299B01;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
-    &:hover{
-        background-color: #fff;
-        color: #299B01;
-        border: 1px solid #299B01;
-    }
-`;
+
 
 export const ModalItem = ({ openItem, setOpenItem }) => {
 
