@@ -11,7 +11,7 @@ const OrderStyled = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
-  min-width: 380px;
+  width: 380px;
   height: calc(100% - 80px);
   background: #FFFFFF;
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
@@ -51,7 +51,8 @@ const EmptyList = styled.p`
 
 export const Order = ({ orders }) => {
 
-  const total = orders.reduce((result, order) => totalPriceItem(order) + result, 0)
+  const total = orders.reduce((result, order) => totalPriceItem(order) + result, 0);
+  const totalCounter = orders.reduce((result, order) => order.count + result, 0)
 
   return(
     <OrderStyled>
@@ -65,7 +66,7 @@ export const Order = ({ orders }) => {
       </OrderContent>
       <Total>
         <span>ИТОГО</span>
-        <span>{totalCurrent(orders)}</span>
+        <span>{totalCounter}</span>
         <TotalPrice>{currency(total)}</TotalPrice>
       </Total>
       <ButtonCheckout>Оформить</ButtonCheckout>

@@ -4,8 +4,11 @@ import { ButtonCheckout } from '../Style/ButtonCheckout';
 import { CountItem } from './CountItem';
 import { useCount } from '../Hooks/useCount';
 import { currency, totalPriceItem } from '../Functions/secondaryFunction';
-
-
+import { Toppings } from './Topping';
+import { useToppings } from '../Hooks/useToppings';
+import { useChoices } from '../Hooks/useChoices';
+import { Choices } from './Choices'
+ 
 
 const Overlay = styled.div`
     position: fixed;
@@ -59,6 +62,8 @@ const TotalPriceItem = styled.div`
 export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
 
   const counter = useCount();
+  const toppings = useToppings(openItem);
+  const choices = useChoices(openItem);
 
     const closeModal = e => {
         if(e.target.id === 'overlay') {
@@ -66,7 +71,12 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
         }
     }
 
-    const order = {...openItem, count: counter.count};
+    const order = {
+      ...openItem,
+      count: counter.count,
+      topping: toppings.toppings,
+      choice: choices.choice,
+    };
 
     const addToOrder = () => {
       setOrders([...orders, order]);
@@ -83,11 +93,15 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
                         <div>{currency(openItem.price)}</div>
                     </HeaderContent>
                     <CountItem {...counter} />
+                    {openItem.toppings && <Toppings {...toppings} />}
+                    { openItem.choices && <Choices {...choices} openItem={openItem} />}
                     <TotalPriceItem>
                       <span>Цена:</span>
                       <span>{currency(totalPriceItem(order))}</span>
                     </TotalPriceItem>
-                    <ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
+                    <ButtonCheckout
+                      onClick={addToOrder}
+                      disabled={order.choices && !order.choice}>Добавить</ButtonCheckout>
                 </Content>
             </Modal>
         </Overlay>
